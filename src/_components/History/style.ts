@@ -1,10 +1,19 @@
 import styled from "styled-components";
 
 export const HistoryContainer = styled.main`
-  margin: 4rem auto 0;
+  margin: 1.5rem auto 0;
   flex: 1;
   padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: auto;
 `
+
+export const TableContainer = styled.div`
+  flex: 1;
+  overflow: auto;
+`;
 
 export const HistoryTable = styled.table`
   width: 100%;
@@ -54,6 +63,8 @@ interface IPriceStatus {
 export const TypographPrice = styled.span.withConfig({
   shouldForwardProp: (prop)  => prop !== 'variant',
 })<IPriceStatus>`
-
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   color: ${props => props.variant === 'income' ? props.theme['green-300'] : props.theme['red-300']}
 `;

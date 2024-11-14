@@ -14,7 +14,18 @@ export const HeaderContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  h1{
-    color: #E1E1E6;
+  `
+
+  export const LogoContent = styled.div`
+  display:flex;
+  align-items: center;
+  gap: 0.5rem;
+  img{
+    width:50px;
   }
   `
+
+  export const TypographLogo = styled.h1`
+    color: #E1E1E6;
+    font-size: 2rem;
+  `;

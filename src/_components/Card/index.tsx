@@ -1,29 +1,37 @@
-import { IconArrowUpCircle } from '@tabler/icons-react';
+import {
+  IconCircleArrowDown,
+  IconCircleArrowUp,
+  IconMoneybag,
+} from '@tabler/icons-react';
 import { CardContainer, CardContent, CardsType } from './style';
+import { useTransactionContext } from '@contexts/TransactionsContext';
+import { priceFormatter } from '@utils/formatter';
 
 function Card() {
+  const { summaryTransactions } = useTransactionContext();
+
   return (
     <CardContainer>
       <CardContent variant={CardsType.MYBALANCE}>
         <header>
           <span>My Balance</span>
-          <IconArrowUpCircle size={32} color="#" />
+          <IconMoneybag size={32} />
         </header>
-        <strong>R$ 16.141,00</strong>
+        <strong>{priceFormatter.format(summaryTransactions.total)}</strong>
       </CardContent>
       <CardContent variant={CardsType.INCOME}>
         <header>
           <span>Income</span>
-          {/* <IconArrowUpCircle size={32} color='#' /> */}
+          <IconCircleArrowUp size={32} />
         </header>
-        <strong>R$ 17.400,00</strong>
+        <strong>{priceFormatter.format(summaryTransactions.income)}</strong>
       </CardContent>
       <CardContent variant={CardsType.OUTCOME}>
         <header>
           <span>Outcome</span>
-          {/* <IconArrowUpCircle size={32} color='#' /> */}
+          <IconCircleArrowDown size={32} />
         </header>
-        <strong>R$ 1.259,00</strong>
+        <strong>{priceFormatter.format(summaryTransactions.outcome)}</strong>
       </CardContent>
     </CardContainer>
   );

@@ -13,11 +13,15 @@ export const SearchFormContainer = styled.form`
     padding: 1rem;
     transition: all 0.2s;
     &:focus{
-      box-shadow: 0 0 0 2px ${(props) => props.theme['green-500']};
+      box-shadow: 0 0 2px 1px ${(props) => props.theme['green-500']};
     }
     &::placeholder{
       color: ${props => props.theme['gray-300']};
     }
+  }
+
+  @media (max-width:50rem){
+    input{width:100%;}
   }
 
   button{
@@ -33,10 +37,11 @@ export const SearchFormContainer = styled.form`
     font-weight: bold;
     border-radius: 6px;
     transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-
+    &:disabled{
+      opacity: 0.6;
+    }
     &:hover{
       background: ${(props) => props.theme['green-500']};
-      /* border: ${(props) => props.theme['green-500']}; */
       color: ${(props) => props.theme['white-100']};
     }
   }

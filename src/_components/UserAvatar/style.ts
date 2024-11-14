@@ -7,6 +7,9 @@ export const HeaderUserContainer = styled.div`
   display: flex;
   gap: 12px;
   align-items: center;
+  @media (max-width: 35rem){
+    display: none;
+  }
 `;
 
 export const HeaderUserContent = styled.div`

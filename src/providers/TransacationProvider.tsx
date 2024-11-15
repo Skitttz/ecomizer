@@ -11,6 +11,7 @@ import { api } from 'src/libs/axios';
 
 export function TransactionProvider({ children }: ITransactionProviderProps) {
   const [transactions, setTransactions] = useState<ITransaction[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const createTransaction = useCallback(async (data: ICreateTransaction) => {
     const { description, type, price, category } = data;
@@ -58,15 +59,21 @@ export function TransactionProvider({ children }: ITransactionProviderProps) {
     [transactions],
   );
   const loadTransactionsData = useCallback(async (query?: string) => {
-    const response = await api.get(apiEndpointsEnum.TRANSACTION, {
-      params: {
-        _sort: 'createdAt',
-        _order: 'desc',
-        q: query,
-      },
-    });
-
-    setTransactions(response.data);
+    setIsLoading(true);
+    try {
+      const response = await api.get(apiEndpointsEnum.TRANSACTION, {
+        params: {
+          _sort: 'createdAt',
+          _order: 'desc',
+          q: query,
+        },
+      });
+      setTransactions(response.data);
+    } catch (error) {
+      console.error('Ops! Error to fetch data');
+    } finally {
+      setIsLoading(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -79,6 +86,7 @@ export function TransactionProvider({ children }: ITransactionProviderProps) {
         summaryTransactions,
         loadTransactions: loadTransactionsData,
         createTransaction,
+        isLoading,
       }}
     >
       {children}

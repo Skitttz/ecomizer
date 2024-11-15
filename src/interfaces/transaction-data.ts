@@ -25,6 +25,7 @@ export interface ITransactionSummary {
 
 export interface ITransactionContextType {
   transactions: ITransaction[];
+  isLoading: boolean;
   loadTransactions: (query?:string) => Promise<void>;
   createTransaction: (transaction:ICreateTransaction) => Promise<void>;
   summaryTransactions: ITransactionSummary;

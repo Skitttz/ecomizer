@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 export const MainFormContainer = styled.div`
+
 display: flex;
 justify-content: space-between;
+margin: 1.5rem auto 0;
+padding: 0 1.5rem;
 @media (max-width:40rem){
   margin-top: 2rem;
   flex-direction: column;

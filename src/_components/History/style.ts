@@ -21,6 +21,7 @@ export const HistoryTable = styled.table`
   flex: 1;
   border-collapse: separate;
   border-spacing: 0 0.5rem;
+
 `;
 
 export const HistoryTableHeader = styled.thead`
